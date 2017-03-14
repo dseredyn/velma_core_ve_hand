@@ -7,6 +7,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
 # Find the RTT-ROS package (this transitively includes the Orocos CMake macros)
 find_package(catkin REQUIRED COMPONENTS
   rtt_ros
+  rtt_subsystem_ports
   velma_core_cs_ve_hand_msgs
   velma_core_ve_hand_re_hand_msgs
   eigen_conversions
@@ -38,17 +39,13 @@ ADD_DEFINITIONS(-DEIGEN_RUNTIME_NO_MALLOC)
 include_directories(${USE_OROCOS_INCLUDE_DIRS} include)
 ### Orocos Targets ###
 
+ros_generate_rtt_master()
+
 orocos_component(velma_core_ve_hand
     src/behavior_normal.cpp
-    src/state_normal.cpp
     src/velma_core_ve_hand.cpp
 )
-target_link_libraries(velma_core_ve_hand ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})
-
-orocos_service(VelmaCoreVeHandMaster
-    src/master_service.cpp
-)
-target_link_libraries(VelmaCoreVeHandMaster ${catkin_LIBRARIES})
+target_link_libraries(velma_core_ve_hand ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES} rtt-${PROJECT_NAME}-master)
 
 ### Orocos Package Exports and Install Targets ###
 

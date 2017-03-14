@@ -1,0 +1,16 @@
+<subsystem_definition>
+    <ports>
+        <in name="velma_core_cs_ve_hand_msgs_Command"        type="velma_core_cs_ve_hand_msgs::Command"     side="top"      ipc="true"  short_name="cmd" />
+
+        <out name="velma_core_cs_ve_hand_msgs_Status"        type="velma_core_cs_ve_hand_msgs::Status"      side="top"      ipc="true"/>
+    </ports>
+    <errors>
+    </errors>
+    <states>
+        <initial_state name="state_velma_core_ve_hand_normal" />
+    </states>
+    <activity period="0.001" />
+
+    <simulation use_ros_sim_clock="false" use_sim_clock="true" />
+
+</subsystem_definition>

@@ -25,8 +25,7 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "abstract_behavior.h"
-#include "input_data.h"
+#include "velma_core_ve_hand/master.h"
 
 namespace velma_core_ve_hand_types {
 
@@ -55,7 +54,30 @@ public:
     }
 };
 
+class StateNormal : public StateBase {
+public:
+    StateNormal() :
+        StateBase("state_velma_core_ve_hand_normal", "normal", "behavior_velma_core_ve_hand_normal")
+    {
+    }
+
+    virtual bool checkInitialCondition(
+                const boost::shared_ptr<InputData >& in_data,
+                const std::vector<RTT::TaskContext*> &components,
+                const std::string& prev_state_name,
+                bool in_error) const
+    {
+        if (prev_state_name == "state_velma_core_ve_hand_normal") {
+            return false;
+        }
+
+        return true;
+    }
+};
+
 };  // namespace velma_core_ve_hand_types
 
 REGISTER_BEHAVIOR( velma_core_ve_hand_types::BehaviorNormal );
+
+REGISTER_STATE( velma_core_ve_hand_types::StateNormal );
 
