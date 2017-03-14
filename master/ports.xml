@@ -1,8 +1,8 @@
 <subsystem_definition>
     <ports>
-        <in name="velma_core_cs_ve_hand_msgs_Command"        type="velma_core_cs_ve_hand_msgs::Command"     side="top"      ipc="true"  short_name="cmd" />
+        <in alias="cmd"        type="velma_core_cs_ve_hand_msgs::Command"     side="top"      ipc="true" />
 
-        <out name="velma_core_cs_ve_hand_msgs_Status"        type="velma_core_cs_ve_hand_msgs::Status"      side="top"      ipc="true"/>
+        <out alias="st"        type="velma_core_cs_ve_hand_msgs::Status"      side="top"      ipc="true" />
     </ports>
     <errors>
     </errors>
