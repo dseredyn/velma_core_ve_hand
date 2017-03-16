@@ -42,7 +42,7 @@ include_directories(${USE_OROCOS_INCLUDE_DIRS} include)
 ros_generate_rtt_master()
 
 orocos_component(velma_core_ve_hand
-    src/behavior_normal.cpp
+#    src/behavior_normal.cpp
     src/velma_core_ve_hand.cpp
 )
 target_link_libraries(velma_core_ve_hand ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES} rtt-${PROJECT_NAME}-master)
